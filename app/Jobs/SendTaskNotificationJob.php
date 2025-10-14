@@ -45,7 +45,6 @@ class SendTaskNotificationJob implements ShouldQueue
                 'user_id' => $manager->id,
                 'task_id' => $this->task->id,
                 'message' => $message,
-                'created_at' => now(),
             ]);
 
             Log::info('Task notification sent', [

@@ -18,9 +18,13 @@ class TaskCommentController extends Controller
     {
         $data = $request->validated();
         $data['task_id'] = $task->id;
-
-        $comment = TaskComment::create($data);
-
+        try{
+            TaskComment::create($data);
+        } catch (\Exception $e) {
+            return response()->json([
+                'error' => $e->getMessage()
+            ], 422);
+        }
         return response()->json([
             'message' => 'Comment added successfully',
         ], 201);

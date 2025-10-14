@@ -13,7 +13,7 @@ return new class extends Migration
             $table->foreignId('task_id')->constrained()->onDelete('cascade');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->text('comment');
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
         });
     }
 

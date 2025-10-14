@@ -22,6 +22,13 @@ class TaskObserver
         }
     }
 
+    public function creating(Task $task)
+    {
+        if ($task->priority === 'high') {
+            $task->status = 'in_progress';
+        }
+    }
+
     /**
      * Handle the Task "updated" event.
      */

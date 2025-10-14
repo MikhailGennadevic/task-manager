@@ -12,7 +12,9 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
-        //
+        $middleware->api([
+            App\Http\Middleware\CheckJsonRequest::class,
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //
